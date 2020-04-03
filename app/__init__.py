@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 
-import google.oauth2.credentials
+# import google.oauth2.credentials
 
 # import oauth_google
 # TODO: config files

@@ -6,14 +6,14 @@ from app import app, db, bcrypt
 from sqlalchemy import exc
 from app.forms import RegistrationForm, LoginForm, UpdateProfileForm, PostForm
 from app import os
-from app import oauth_google
+# from app import oauth_google
 from app.models import User, Post, Strain, Animal, Tissue, Sequencing, Analysis
 from flask_login import login_user, current_user, logout_user, login_required
 
-# app.config['secret_key'] = '9b7f541fc96486f808ad052d004140e9'
+app.config['secret_key'] = '9b7f541fc96486f808ad052d004140e9'
 app.secret_key = os.environ.get("FN_FLASK_SECRET_KEY", default=False)
 
-app.register_blueprint(oauth_google.app)
+# app.register_blueprint(oauth_google.app)
 
 
 @app.route('/')
@@ -135,14 +135,14 @@ def login_plain():
     return render_template('login.html', title='Login', form=form)
 
 
-@app.route('/login/oauth')
-def index():
-    if oauth_google.is_logged_in():
-        user_info = oauth_google.get_user_info()
-        return '<div>You are currently logged in as ' + user_info['given_name'] + '<div><pre>' + json.dumps(user_info,
-                                                                                                            indent=4) + "</pre>"
-
-    return 'You are not currently logged in.'
+# @app.route('/login/oauth')
+# def index():
+#     if oauth_google.is_logged_in():
+#         user_info = oauth_google.get_user_info()
+#         return '<div>You are currently logged in as ' + user_info['given_name'] + '<div><pre>' + json.dumps(user_info,
+#                                                                                                             indent=4) + "</pre>"
+#
+#     return 'You are not currently logged in.'
 
 
 # logout & redirect to login plain
