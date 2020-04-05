@@ -1,5 +1,6 @@
 from datetime import datetime
-from app import db, login_manager
+from app import db, login_manager, app
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask_login import UserMixin
 
 
@@ -19,6 +20,26 @@ class User(db.Model, UserMixin):
     # relationship 1:multi, backref is like making column
     posts = db.relationship('Post', backref='author', lazy=True)
 
+    # token return
+    def getting_token(self, expiration_time=3600):
+        # creating serializer
+        serializer = Serializer(app.config['SECRET_KEY'], expiration_time)
+        return serializer.dumps({'user_id': self.id}).decode('utf-8')
+
+    # This function is static because it doesn't user any self(object)
+    # verifying token and return user_id
+    @staticmethod
+    def validating_token(token):
+        # creating serializer
+        serializer = Serializer(app.config['SECRET_KEY'])
+        # exception for expiration
+        try:
+            user_id = serializer.loads(token)['user_id']
+        except:
+            # return none if it occurs exception
+            return None
+        return User.query.get(user_id)
+
     # magic method
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
@@ -37,6 +58,14 @@ class Post(db.Model):
     # magic method
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+
+
+class CVocab(db.Model):
+    __tablename__ = "ControlledVocab"
+    vocab = db.Column(db.Text, unique=True, primary_key=True)
+
+    def __repr__(self):
+        return f"Strain('{self.vocab}')"
 
 
 class Strain(db.Model):
@@ -78,7 +107,7 @@ class Tissue(db.Model):
         return f"Strain('{self.ID}', '{self.type}', '{self.animal_ID}', '{self.Transfer_History}', '{self.note}')"
 
 class Sequencing(db.Model):
-    __tablename__ = "sequencing"
+    __tablename__ = "Sequencing"
     run_ID = db.Column(db.String(50), nullable=False, primary_key=True)
     platform = db.Column(db.String(50), nullable=False) # FK _controlled_vocab(vocab)
     DNA_source = db.Column(db.String(50), nullable=False) #FK sequencing_Tissue_ID_fk references  Tissue,

@@ -79,3 +79,19 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+.site-header .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #f47f20;
+}
+
+.navbar-dark .navbar-brand {
+    color: #f47f20;
+}
+
+.navbar-dark .navbar-brand:hover {
+    color: #f47f20;
+}

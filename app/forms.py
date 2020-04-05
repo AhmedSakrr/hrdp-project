@@ -18,7 +18,7 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Sign Up')
 
     # costume validator for username
-    def validate_username(self, username):
+    def validating_username(self, username):
         # print(":::::::::::::::::", username.data)
         # print(":::::::::::::::::", User.query.filter_by(username=username.data).first())
         user = User.query.filter_by(username=username.data).first()
@@ -26,7 +26,7 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Username is already taken. Choose another things')
 
     # costume validator for email
-    def validate_email(self, email):
+    def validating_email(self, email):
         # print(":::::::::::::::::", email.data)
         # print(":::::::::::::::::", User.query.filter_by(email=email.data).first())
         user = User.query.filter_by(email=email.data).first()
@@ -44,7 +44,7 @@ class UpdateProfileForm(FlaskForm):
     submit = SubmitField('Update')
 
     # costume validator for username
-    def validate_username(self, username):
+    def validating_username(self, username):
         print("::::::::1:::::::::", username.data)
         print("::::::::2:::::::::", current_user.username)
         print("::::::::3:::::::::", User.query.filter_by(username=username.data).first())
@@ -55,7 +55,7 @@ class UpdateProfileForm(FlaskForm):
                 raise ValidationError('Username is already taken. Choose another things')
 
     # costume validator for email
-    def validate_email(self, email):
+    def validateing_email(self, email):
         print(":::::::::::::::::", email.data)
         print(":::::::::::::::::", User.query.filter_by(email=email.data).first())
         if email.data != current_user.email:
@@ -78,3 +78,23 @@ class PostForm(FlaskForm):
     # to use route
     submit = SubmitField('Post')
 
+
+# requesting password reset page
+class ResetPasswordRequestFrom(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Password reset request')
+
+    # costume validator for email
+    def validating_email(self, email):
+        # print(":::::::::::::::::", email.data)
+        # print(":::::::::::::::::", User.query.filter_by(email=email.data).first())
+        user = User.query.filter_by(email=email.data).first()
+        if user is None:
+            raise ValidationError("You don't have any account here. Try another one or Register First")
+
+
+# Resetting password page
+class PasswordResetFrom:
+    password = PasswordField('Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Reset Password')

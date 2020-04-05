@@ -13,7 +13,11 @@
     {% for table in tableset[tab] %}
     <tr>
         {% for column in columnset[tab] %}
+        {% if tab == 'sequencing' and column == 'run_ID' %}
+        <td><a href="{{url_for('sequencing', run_id=table[column])}}">{{ table[column] }}</a></td>
+        {% else %}
         <td>{{ table[column] }}</td>
+        {% endif %}
         {% endfor %}
     </tr>
     {% endfor %}
@@ -24,28 +28,32 @@
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Strain</a>
+        <a class="nav-link active" id="cvocab-tab" data-toggle="tab" href="#cvocab" role="tab" aria-controls="cvocab" aria-selected="true">Controlled Vocabulary</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Animal</a>
+        <a class="nav-link" id="strain-tab" data-toggle="tab" href="#strain" role="tab" aria-controls="strain" aria-selected="false">Strain</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Tissue</a>
+        <a class="nav-link" id="animal-tab" data-toggle="tab" href="#animal" role="tab" aria-controls="animal" aria-selected="false">Animal</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Sequencing</a>
+        <a class="nav-link" id="tissue-tab" data-toggle="tab" href="#tissue" role="tab" aria-controls="tissue" aria-selected="false">Tissue</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="andrew-tab" data-toggle="tab" href="#andrew" role="tab" aria-controls="andrew" aria-selected="false">Analysis</a>
+        <a class="nav-link" id="sequencing-tab" data-toggle="tab" href="#sequencing" role="tab" aria-controls="sequencing" aria-selected="false">Sequencing</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="analysis-tab" data-toggle="tab" href="#analysis" role="tab" aria-controls="analysis" aria-selected="false">Analysis</a>
     </li>
 </ul>
 <!-- Tab panes -->
 <div class="tab-content">
-    <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">{{ grid('strain')}}</div>
-    <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">{{ grid('animal')}}</div>
-    <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">{{ grid('tissue')}}</div>
-    <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">{{ grid('sequencing')}}</div>
-    <div class="tab-pane" id="andrew" role="tabpanel" aria-labelledby="andrew-tab">{{ grid('analysis')}}</div>
+    <div class="tab-pane fade show active" id="cvocab" role="tabpanel" aria-labelledby="cvocab-tab">{{ grid('cvocab')}}</div>
+    <div class="tab-pane fade" id="strain" role="tabpanel" aria-labelledby="strain-tab">{{ grid('strain')}}</div>
+    <div class="tab-pane fade" id="animal" role="tabpanel" aria-labelledby="animal-tab">{{ grid('animal')}}</div>
+    <div class="tab-pane fade" id="tissue" role="tabpanel" aria-labelledby="tissue-tab">{{ grid('tissue')}}</div>
+    <div class="tab-pane fade" id="sequencing" role="tabpanel" aria-labelledby="sequencing-tab">{{ grid('sequencing')}}</div>
+    <div class="tab-pane fade" id="analysis" role="tabpanel" aria-labelledby="analysis-tab">{{ grid('analysis')}}</div>
 </div>
 {% endblock content %}
 

@@ -2,13 +2,15 @@ import os
 import secrets
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
-from app import app, db, bcrypt
+from app import app, db, bcrypt, mail
 from sqlalchemy import exc
-from app.forms import RegistrationForm, LoginForm, UpdateProfileForm, PostForm
+from app.forms import (RegistrationForm, LoginForm, UpdateProfileForm
+                        , PostForm, ResetPasswordRequestFrom, PasswordResetFrom)
 from app import os
 # from app import oauth_google
-from app.models import User, Post, Strain, Animal, Tissue, Sequencing, Analysis
+from app.models import User, Post, CVocab, Strain, Animal, Tissue, Sequencing, Analysis
 from flask_login import login_user, current_user, logout_user, login_required
+from flask_mail import Message
 
 app.config['secret_key'] = '9b7f541fc96486f808ad052d004140e9'
 app.secret_key = os.environ.get("FN_FLASK_SECRET_KEY", default=False)
@@ -24,13 +26,7 @@ def home():
     page = request.args.get('page', 1, type=int)
     # legacy -> pagination
     # order: order_by(Post.date_posted.desc())
-    postsall = Post.query.all()
     posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=2)
-    print(postsall)
-    print(type(postsall))
-    print(type(posts))
-    print(posts.total)
-    # print(posts)
 
     return render_template('home.html', title='home', posts=posts)
 
@@ -45,6 +41,15 @@ def data_hrdp():
 
     tableset = {}
     columnset = {}
+
+    # strain
+    # data list
+    cvocabs = CVocab.query.all()
+    # column list
+    cvocab_columns = CVocab.metadata.tables['ControlledVocab'].columns.keys()
+
+    tableset['cvocab'] = cvocabs
+    columnset['cvocab'] = cvocab_columns
 
     # strain
     # data list
@@ -77,7 +82,7 @@ def data_hrdp():
     # data list
     sequencings = Sequencing.query.all()
     # column list
-    sequencing_columns = Sequencing.metadata.tables['Tissue'].columns.keys()
+    sequencing_columns = Sequencing.metadata.tables['Sequencing'].columns.keys()
 
     tableset['sequencing'] = sequencings
     columnset['sequencing'] = sequencing_columns
@@ -86,12 +91,32 @@ def data_hrdp():
     # data list
     analyses = Analysis.query.all()
     # column list
-    analysis_columns = Analysis.metadata.tables['Tissue'].columns.keys()
+    analysis_columns = Analysis.metadata.tables['Analysis'].columns.keys()
 
     tableset['analysis'] = analyses
     columnset['analysis'] = analysis_columns
 
     return render_template('data_hrdp.html', title='HRDP', tableset=tableset, columnset=columnset)
+
+# int: type (안써도 된다 - more specific하게 지정한것)
+@app.route("/data/hrdp/sequencing/<string:run_id>")
+def sequencing(run_id):
+
+    tableset = {}
+    columnset = {}
+
+    # get_or_404 is relative of get(), 404 is not found
+    sequencings = Sequencing.query.all()
+    # sequencings = Sequencing.query.get(run_id)
+    sequencing_columns = Sequencing.metadata.tables['Sequencing'].columns.keys()
+    # print("::::::::::::::::::::::::::::::::zzzzzzzzzzzzz::::", seq_data)
+    # print("::::::::::::::::::::::::::::::::zzzzzzzzzzzzz::::", sequencing_columns)
+    # post = Post.query.get_or_404(post_id)
+
+    tableset['sequencing'] = sequencings
+    columnset['sequencing'] = sequencing_columns
+
+    return render_template('hrdp_sequencing.html', title='Sequencing Data', tableset=tableset, columnset=columnset)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -99,7 +124,6 @@ def register():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = RegistrationForm()
-    # print(":::::::::::::::", form.validate_on_submit())
     if form.validate_on_submit():
         # firstly, bcrypt process
         hashed_password = bcrypt.generate_password_hash(form.password.data)
@@ -113,7 +137,7 @@ def register():
 
         # category: success
         flash(f'Account created for {form.username.data}!! Now you can login', 'success')
-        # after creating, user goes to login page (login_plain is func nane)
+        # after creating, user goes to login page (login_plain is func name)
         return redirect(url_for('login_plain'))
     return render_template('register.html', title='Register', form=form)
 
@@ -210,8 +234,8 @@ def creating_post():
     # form을 form wtf을 이용한 forms.py에서 가져와 쓴다. (form은 하나의 클래스에서 가져옴)
     form = PostForm()
     # wtf의 class기반의 form을 가져와서 submit한 녀석을 validation
-    print("::::creating post:::", form.title.data)
-    print("::::creating post:::", form.content.data)
+    print("::::creating post::::::::::::title:::::::::::", form.title.data)
+    print("::::creating post::::::::::::content:::::::::", form.content.data)
     # print(":::::::", form.validate_on_submit())
     if form.validate_on_submit():
         # DB에 저장, Post from model
@@ -281,5 +305,40 @@ def user_posts(username):
         .order_by(Post.date_posted.desc()) \
         .paginate(page=page, per_page=2)
     return render_template('user_posts.html', posts=posts, user=user)
+
+# flask-mail package 이용
+def sending_reset_email(user):
+    pass
+
+@app.route("/requestpasswordreset", methods=['GET', 'POST'])
+def requesting_password_reset():
+    # if logged in, go to
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form.ResetPasswordRequestFrom()
+    # form validation
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        sending_reset_email(user)
+        flash('Check your email inbox!', 'info')
+        return redirect('login_plain')
+    return render_template('request_password_reset.html', title="Reset Password Request", form=form)
+
+@app.route("/passwordreset/<token>", methods=['GET', 'POST'])
+def resetting_password(token):
+# if logged in, go to
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
+    #func in User in models.py
+    user = User.validating_token(token)
+    if user is None:
+        flash('Token is invalid or expired.', 'warning')
+        return redirect(url_for('requesting_password_reset'))
+
+    form = PasswordResetFrom()
+    return render_template('reset_password.html', title="Reset Password", form=form)
+
+
 
 

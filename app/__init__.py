@@ -6,6 +6,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from flask_mail import Mail
 
 # import google.oauth2.credentials
 
@@ -28,5 +29,12 @@ login_manager.login_view = 'login_plain'
 # flash message for bootstrap
 login_manager.login_message_category= '_info_'
 # after login, going to the page client visited
+
+app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USER_TLS'] = True
+app.config['MAIL_USERNAME'] = os.environ.get('EMAIL_USER')
+app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASSWORD')
+mail = Mail(app)
 
 from app import routes
