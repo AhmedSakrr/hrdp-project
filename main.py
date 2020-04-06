@@ -1,5 +1,5 @@
-# file name : run.py
-# path : /hrdpflask/run.py
+# file name : main.py
+# path : /hrdpflask/main.py
 
 
 from app import app
