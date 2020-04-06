@@ -24,8 +24,8 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 # session
 login_manager = LoginManager(app)
-# function name (config for login first required pages)
-login_manager.login_view = 'login_plain'
+# function name (config for login first required pages 'login_plain -> users.login_plain due to Blueprint)
+login_manager.login_view = 'users.login_plain'
 # flash message for bootstrap
 login_manager.login_message_category= '_info_'
 # after login, going to the page client visited
@@ -39,8 +39,16 @@ app.config['MAIL_USE_SSL'] = True
 # fetching EMAIL_USER, EMAIL_PASSWORD from env variable
 # app.config['MAIL_USERNAME'] = os.environ.get('EMAIL_USER')
 # app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASSWORD')
-app.config['MAIL_USERNAME'] = '@gmail.com'
-app.config['MAIL_PASSWORD'] = ''
+app.config['MAIL_USERNAME'] = 'attobes@gmail.com'
+app.config['MAIL_PASSWORD'] = 'Panjung@@gl2'
 mail = Mail(app)
 
-from app import routes
+from app.users.routes import users
+from app.posts.routes import posts
+from app.main.routes import main
+from app.data.routes import data
+
+app.register_blueprint(users)
+app.register_blueprint(posts)
+app.register_blueprint(main)
+app.register_blueprint(data)

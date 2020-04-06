@@ -14,7 +14,7 @@
     <tr>
         {% for column in columnset[tab] %}
         {% if tab == 'sequencing' and column == 'run_ID' %}
-        <td><a href="{{url_for('sequencing', run_id=table[column])}}">{{ table[column] }}</a></td>
+        <td><a href="{{url_for('data.sequencing', run_id=table[column])}}">{{ table[column] }}</a></td>
         {% else %}
         <td>{{ table[column] }}</td>
         {% endif %}
