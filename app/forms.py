@@ -90,11 +90,11 @@ class ResetPasswordRequestFrom(FlaskForm):
         # print(":::::::::::::::::", User.query.filter_by(email=email.data).first())
         user = User.query.filter_by(email=email.data).first()
         if user is None:
-            raise ValidationError("You don't have any account here. Try another one or Register First")
+            raise ValidationError("You don't have any account here. Try another one or Register first")
 
 
 # Resetting password page
-class PasswordResetFrom:
+class PasswordResetFrom(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Reset Password')

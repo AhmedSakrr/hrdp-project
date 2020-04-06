@@ -12,8 +12,8 @@ from app.models import User, Post, CVocab, Strain, Animal, Tissue, Sequencing, A
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 
-app.config['secret_key'] = '9b7f541fc96486f808ad052d004140e9'
-app.secret_key = os.environ.get("FN_FLASK_SECRET_KEY", default=False)
+# app.config['secret_key'] = '9b7f541fc96486f808ad052d004140e9'
+# app.secret_key = os.environ.get("FN_FLASK_SECRET_KEY", default=False)
 
 # app.register_blueprint(oauth_google.app)
 
@@ -146,6 +146,7 @@ def register():
 def login_plain():
     # if logged in, go to
     if current_user.is_authenticated:
+        print("what")
         return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
@@ -308,35 +309,63 @@ def user_posts(username):
 
 # flask-mail package 이용
 def sending_reset_email(user):
-    pass
+
+    # default 3600
+    token = user.getting_token()
+
+    # Message(subject, sender, recipient)
+    message = Message('Password Reset Request', sender='attobes@gmail.com', recipients=[user.email])
+
+    # external: using this for absolute path, relative is just for the app here.
+    message.body = f'''In order to reset your password, Visit the link below:
+
+{url_for('resetting_password', token=token, _external=True)}
+If you did not make this request, call us immediately or change your password.
+'''
+    print(message)
+    mail.send(message)
 
 @app.route("/requestpasswordreset", methods=['GET', 'POST'])
 def requesting_password_reset():
-    # if logged in, go to
+    # if logged in already, go to home
     if current_user.is_authenticated:
         return redirect(url_for('home'))
-    form.ResetPasswordRequestFrom()
+    form = ResetPasswordRequestFrom()
     # form validation
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         sending_reset_email(user)
         flash('Check your email inbox!', 'info')
-        return redirect('login_plain')
+        return redirect(url_for('login_plain'))
     return render_template('request_password_reset.html', title="Reset Password Request", form=form)
 
-@app.route("/passwordreset/<token>", methods=['GET', 'POST'])
+# getting token through GET
+@app.route("/passwordreset/<string:token>", methods=['GET', 'POST'])
 def resetting_password(token):
 # if logged in, go to
     if current_user.is_authenticated:
         return redirect(url_for('home'))
 
-    #func in User in models.py
+    # validating method in User in models.py
     user = User.validating_token(token)
     if user is None:
-        flash('Token is invalid or expired.', 'warning')
+        flash('The token is invalid or expired.', 'warning')
         return redirect(url_for('requesting_password_reset'))
 
     form = PasswordResetFrom()
+
+    if form.validate_on_submit():
+        # firstly, bcrypt process
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        # resetting password!
+        user.password = hashed_password
+        # committing
+        db.session.commit()
+        # category: success
+        flash(f'Password updated!! Try login!!', 'success')
+        # after creating, user goes to login page (login_plain is func name)
+        return redirect(url_for('login_plain'))
+
     return render_template('reset_password.html', title="Reset Password", form=form)
 
 

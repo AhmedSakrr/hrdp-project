@@ -1,5 +1,6 @@
 from datetime import datetime
 from app import db, login_manager, app
+# disposable token for sending email
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask_login import UserMixin
 
@@ -20,24 +21,25 @@ class User(db.Model, UserMixin):
     # relationship 1:multi, backref is like making column
     posts = db.relationship('Post', backref='author', lazy=True)
 
-    # token return
-    def getting_token(self, expiration_time=3600):
+    # token return (getting token)
+    def getting_token(self, expiration_time=3600): # 1 hour
         # creating serializer
         serializer = Serializer(app.config['SECRET_KEY'], expiration_time)
         return serializer.dumps({'user_id': self.id}).decode('utf-8')
 
-    # This function is static because it doesn't user any self(object)
+    # This function is static method because it doesn't user any self(object)
     # verifying token and return user_id
     @staticmethod
     def validating_token(token):
         # creating serializer
         serializer = Serializer(app.config['SECRET_KEY'])
-        # exception for expiration
+        # exception dealing for expiration
         try:
             user_id = serializer.loads(token)['user_id']
         except:
             # return none if it occurs exception
             return None
+        # return user using token got
         return User.query.get(user_id)
 
     # magic method
