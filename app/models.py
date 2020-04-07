@@ -1,8 +1,9 @@
 from datetime import datetime
-from app import db, login_manager, app
+from app import db, login_manager
 # disposable token for sending email
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask_login import UserMixin
+from flask import current_app
 
 
 @login_manager.user_loader
@@ -24,7 +25,7 @@ class User(db.Model, UserMixin):
     # token return (getting token)
     def getting_token(self, expiration_time=3600): # 1 hour
         # creating serializer
-        serializer = Serializer(app.config['SECRET_KEY'], expiration_time)
+        serializer = Serializer(current_app.config['SECRET_KEY'], expiration_time)
         return serializer.dumps({'user_id': self.id}).decode('utf-8')
 
     # This function is static method because it doesn't user any self(object)
@@ -32,7 +33,7 @@ class User(db.Model, UserMixin):
     @staticmethod
     def validating_token(token):
         # creating serializer
-        serializer = Serializer(app.config['SECRET_KEY'])
+        serializer = Serializer(current_app.config['SECRET_KEY'])
         # exception dealing for expiration
         try:
             user_id = serializer.loads(token)['user_id']
@@ -134,6 +135,7 @@ class Sequencing(db.Model):
     Raw_data_available_from = db.Column(db.String(50))
     Raw_data_location = db.Column(db.String(50))
     Raw_data_backup_location = db.Column(db.String(50))
+    Raw_data_coverage = db.Column(db.String(50))
     note = db.Column(db.Text)
 
     def __repr__(self):
@@ -141,7 +143,7 @@ class Sequencing(db.Model):
                f", '{self.DNA_extraction_method}', '{self.DNA_concentration}', '{self.DNA_target_length}', '{self.DNA_extraction_technician}'" \
                f", '{self.DNA_extraction_date}', '{self.DNA_extraction_facility}', '{self.Library_date}', '{self.Library_kit}', '{self.Library_technician}'" \
                f", '{self.Sequencing_instrument}', '{self.Sequencing_technician}', '{self.Sequencing_date}', '{self.Raw_data_read_length}', '{self.Raw_data_format}'" \
-               f", '{self.Raw_data_read_count}', '{self.Raw_data_file_name}', '{self.Raw_data_available_from}', '{self.Raw_data_location}', '{self.Raw_data_backup_location}'), '{self.note}')"
+               f", '{self.Raw_data_read_count}', '{self.Raw_data_file_name}', '{self.Raw_data_available_from}', '{self.Raw_data_location}', '{self.Raw_data_backup_location}'), '{self.Raw_data_coverage}'), '{self.note}')"
 
 
 class Analysis(db.Model):

@@ -49,10 +49,13 @@ def data_hrdp():
 
     # sequencing
     # data list
-    sequencings = Sequencing.query.all()
+    sequencing_list =[]
+    sequencings = Sequencing.query.with_entities(Sequencing.run_ID, Sequencing.platform, Sequencing.Raw_data_coverage)
     # column list
-    sequencing_columns = Sequencing.metadata.tables['Sequencing'].columns.keys()
-
+    # sequencing_columns = Sequencing.metadata.tables['Sequencing'].columns['run_ID', 'platform', 'Raw_data_coverage']
+    sequencing_columns = Tissue.metadata.tables['Sequencing'].columns.keys()
+    print(sequencing_columns)
+    print(type(sequencing_columns))
     tableset['sequencing'] = sequencings
     columnset['sequencing'] = sequencing_columns
 

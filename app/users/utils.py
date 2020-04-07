@@ -1,9 +1,9 @@
 import os
 import secrets
 from PIL import Image
-from flask import url_for
+from flask import url_for, current_app
 from flask_mail import Message
-from app import app, mail
+from app import mail
 
 # saving profile pic in server file system
 def saving_pic(form_picture):
@@ -14,7 +14,7 @@ def saving_pic(form_picture):
     # making new file name
     new_picture_filename = random_hex + file_ext
     # making path to store new pic
-    picture_path = os.path.join(app.root_path, 'static/profile_pics', new_picture_filename)
+    picture_path = os.path.join(current_app.root_path, 'static/profile_pics', new_picture_filename)
     print("::::::::::::::::::", picture_path)
     # before saving the pic, resizing using PIL import Image
     pixel_size = (122, 122)

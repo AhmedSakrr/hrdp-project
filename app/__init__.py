@@ -1,54 +1,71 @@
 # file name : __init__.py
 # path : /hrdpflask/app/__init__.py
 
-import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
+from app.config import Config
 
 # import google.oauth2.credentials
 
 # import oauth_google
 # TODO: config files
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = '622eddbc87aa89d096fefb08c8460a65'
-# /// relative path from current file
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hrdp.sdb'
+# these two lines move to create_app() inside
+# app = Flask(__name__)
+# app.config.from_object(Config)
 
 # db instance
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 # hash
-bcrypt = Bcrypt(app)
+bcrypt = Bcrypt()
 # session
-login_manager = LoginManager(app)
+login_manager = LoginManager()
 # function name (config for login first required pages 'login_plain -> users.login_plain due to Blueprint)
 login_manager.login_view = 'users.login_plain'
 # flash message for bootstrap
 login_manager.login_message_category= '_info_'
 # after login, going to the page client visited
+mail = Mail()
 
-# app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
-# app.config['MAIL_PORT'] = 587
-# app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USE_SSL'] = True
-# fetching EMAIL_USER, EMAIL_PASSWORD from env variable
-# app.config['MAIL_USERNAME'] = os.environ.get('EMAIL_USER')
-# app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASSWORD')
-app.config['MAIL_USERNAME'] = 'attobes@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Panjung@@gl2'
-mail = Mail(app)
+# these lines move to create_app() inside
+# from app.users.routes import users
+# from app.posts.routes import posts
+# from app.main.routes import main
+# from app.data.routes import data
+#
+# app.register_blueprint(users)
+# app.register_blueprint(posts)
+# app.register_blueprint(main)
+# app.register_blueprint(data)
 
-from app.users.routes import users
-from app.posts.routes import posts
-from app.main.routes import main
-from app.data.routes import data
+# app 대신에 이제 create_app() 사용
+def create_app(config_class=Config):
+    app = Flask(__name__)
+    app.config.from_object(Config)
 
-app.register_blueprint(users)
-app.register_blueprint(posts)
-app.register_blueprint(main)
-app.register_blueprint(data)
+    # db instance
+    db.init_app(app)
+    # hash
+    bcrypt.init_app(app)
+    # session
+    login_manager.init_app(app)
+    mail.init_app(app)
+
+    from app.users.routes import users
+    from app.posts.routes import posts
+    from app.main.routes import main
+    from app.data.routes import data
+    from app.errors.error_handlers import errors # instance of Blueprint in __init__.py
+
+    app.register_blueprint(users)
+    app.register_blueprint(posts)
+    app.register_blueprint(main)
+    app.register_blueprint(data)
+    app.register_blueprint(errors)
+
+    return app
+
+
