@@ -87,7 +87,7 @@ class Strain(db.Model):
 class Animal(db.Model):
     __tablename__ = "Animal"
     animal_name = db.Column(db.String(50), nullable=False, primary_key=True)
-    strain_name = db.Column(db.String(50), db.ForeignKey('strain.name'), nullable=False)
+    strain_name = db.Column(db.String(50), nullable=False) #, db.ForeignKey('strain.name')
     sex = db.Column(db.String(1))
     age = db.Column(db.String(50))
     generation = db.Column(db.String(50))
@@ -102,7 +102,7 @@ class Tissue(db.Model):
     __tablename__ = "Tissue"
     ID = db.Column(db.String(50), nullable=False, unique=True, primary_key=True)
     type = db.Column(db.String(50), nullable=False)
-    animal_ID = db.Column(db.String(50), nullable=False)
+    animal_ID = db.Column(db.String(50), db.ForeignKey('animal.name'), nullable=False)
     Transfer_History = db.Column(db.Text)
     note = db.Column(db.Text)
 
@@ -112,8 +112,8 @@ class Tissue(db.Model):
 class Sequencing(db.Model):
     __tablename__ = "Sequencing"
     run_ID = db.Column(db.String(50), nullable=False, primary_key=True)
-    platform = db.Column(db.String(50), nullable=False) # FK _controlled_vocab(vocab)
-    DNA_source = db.Column(db.String(50), nullable=False) #FK sequencing_Tissue_ID_fk references  Tissue,
+    platform = db.Column(db.String(50), db.ForeignKey('ControlledVocab.vocab'), nullable=False) # FK _controlled_vocab(vocab)
+    DNA_source = db.Column(db.String(50), db.ForeignKey('Tissue.ID'), nullable=False) #FK sequencing_Tissue_ID_fk references
     Library_facility = db.Column(db.String(50))
     Sequencing_facility = db.Column(db.String(50))
     DNA_extraction_method = db.Column(db.String(50))

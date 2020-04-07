@@ -1,6 +1,7 @@
 from flask import Blueprint
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from app.models import User, Post, CVocab, Strain, Animal, Tissue, Sequencing, Analysis
+from app import db
 
 
 data = Blueprint('data', __name__)
@@ -49,13 +50,24 @@ def data_hrdp():
 
     # sequencing
     # data list
-    sequencing_list =[]
-    sequencings = Sequencing.query.with_entities(Sequencing.run_ID, Sequencing.platform, Sequencing.Raw_data_coverage)
+
+    sequencings = db.session.query(
+        Sequencing.run_ID.label("RunID"),
+        Sequencing.platform.label("Platform"),
+        Sequencing.Raw_data_coverage.label("Raw_data_coverage"),
+        Animal.strain_name.label("Rat_Strain"),
+        Tissue.type.label("Tissue_name")).join(Tissue).join(Animal, Tissue.animal_ID == Animal.animal_name).all()
+
+
+
+    sequencing_columns = ['RunID', 'Platform', 'Raw_data_coverage', 'Tissue_name', 'Rat_Strain']
+    # sequencings = Sequencing.query.with_entities(Sequencing.run_ID, Sequencing.platform, Sequencing.Raw_data_coverage)
     # column list
     # sequencing_columns = Sequencing.metadata.tables['Sequencing'].columns['run_ID', 'platform', 'Raw_data_coverage']
-    sequencing_columns = Tissue.metadata.tables['Sequencing'].columns.keys()
-    print(sequencing_columns)
-    print(type(sequencing_columns))
+    # sequencing_columns = Tissue.metadata.tables['Sequencing'].columns.keys()
+    print(":::::::::::", sequencings)
+    print("::::::sequencing_columns:::::", sequencing_columns)
+    print(type(sequencings))
     tableset['sequencing'] = sequencings
     columnset['sequencing'] = sequencing_columns
 
