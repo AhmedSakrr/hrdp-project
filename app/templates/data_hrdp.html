@@ -27,11 +27,11 @@
 <h1>HRDP Data</h1>
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
+<!--    <li class="nav-item">-->
+<!--        <a class="nav-link active" id="cvocab-tab" data-toggle="tab" href="#cvocab" role="tab" aria-controls="cvocab" aria-selected="true">Controlled Vocabulary</a>-->
+<!--    </li>-->
     <li class="nav-item">
-        <a class="nav-link active" id="cvocab-tab" data-toggle="tab" href="#cvocab" role="tab" aria-controls="cvocab" aria-selected="true">Controlled Vocabulary</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="strain-tab" data-toggle="tab" href="#strain" role="tab" aria-controls="strain" aria-selected="false">Strain</a>
+        <a class="nav-link active" id="strain-tab" data-toggle="tab" href="#strain" role="tab" aria-controls="strain" aria-selected="false">Strain</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" id="animal-tab" data-toggle="tab" href="#animal" role="tab" aria-controls="animal" aria-selected="false">Animal</a>
@@ -48,8 +48,8 @@
 </ul>
 <!-- Tab panes -->
 <div class="tab-content">
-    <div class="tab-pane fade show active" id="cvocab" role="tabpanel" aria-labelledby="cvocab-tab">{{ grid('cvocab')}}</div>
-    <div class="tab-pane fade" id="strain" role="tabpanel" aria-labelledby="strain-tab">{{ grid('strain')}}</div>
+<!--    <div class="tab-pane fade show active" id="cvocab" role="tabpanel" aria-labelledby="cvocab-tab">{{ grid('cvocab')}}</div>-->
+    <div class="tab-pane fade show active" id="strain" role="tabpanel" aria-labelledby="strain-tab">{{ grid('strain')}}</div>
     <div class="tab-pane fade" id="animal" role="tabpanel" aria-labelledby="animal-tab">{{ grid('animal')}}</div>
     <div class="tab-pane fade" id="tissue" role="tabpanel" aria-labelledby="tissue-tab">{{ grid('tissue')}}</div>
     <div class="tab-pane fade" id="sequencing" role="tabpanel" aria-labelledby="sequencing-tab">{{ grid('sequencing')}}</div>
