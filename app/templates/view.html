@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+<!--<table class="table table-striped">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--    {% for column in column_list %}-->
+<!--        <th scope="col">{{column}}</th>-->
+<!--    {% endfor %}-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--    {% for seq_data_row in seq_data_list %}-->
+<!--    <tr>-->
+<!--        <td><a href="{{url_for('data.sequencing', run_id=table[column])}}">{{ seq_data_row }}</a></td>-->
+<!--    </tr>-->
+<!--    {% endfor %}-->
+<!--  </tbody>-->
+<!--</table>-->
+<h1>Sequencing View</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+    {% for column in columnset %}
+        <th scope="col">{{column}}</th>
+    {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in tableset %}
+    <tr>
+        <td><a href="{{url_for('data.view_detail', run_id=row[0])}}">{{row[0]}}</a></td>
+        {% for i in range(1, row| length)%}
+        <td>{{ row[i] }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

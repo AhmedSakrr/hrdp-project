@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+{% macro grid(table=table) -%}
+<table class="table table-striped">
+  <thead>
+    <tr>
+    {% for column in columnset[table] %}
+        <th scope="col">{{column}}</th>
+    {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% set class = tableset[table] %}
+    <tr>
+        {% for column in columnset[table] %}
+        <td>{{ class[column] }}</td>
+        {% endfor %}
+    </tr>
+  </tbody>
+</table>
+{%- endmacro %}
+<h1>Strain</h1>
+{{ grid('strain')}}
+<h1>Animal</h1>
+{{ grid('animal')}}
+<h1>Tissue</h1>
+{{ grid('tissue')}}
+<h1>Sequencing</h1>
+{{ grid('sequencing')}}
+<h1>Analysis</h1>
+{{ grid('analysis')}}
+{% endblock content %}

@@ -1,66 +1,6 @@
 from datetime import datetime
-from app import db, login_manager
-# disposable token for sending email
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from flask_login import UserMixin
+from app import db
 from flask import current_app
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    # casting into int
-    return User.query.get(int(user_id))
-
-
-# UserMixin need to login
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    image_file = db.Column(db.String(20), nullable=False, default='default_profile.jpg')  # profile picture
-    password = db.Column(db.String(60), nullable=False)
-    # relationship 1:multi, backref is like making column
-    posts = db.relationship('Post', backref='author', lazy=True)
-
-    # token return (getting token)
-    def getting_token(self, expiration_time=3600): # 1 hour
-        # creating serializer
-        serializer = Serializer(current_app.config['SECRET_KEY'], expiration_time)
-        return serializer.dumps({'user_id': self.id}).decode('utf-8')
-
-    # This function is static method because it doesn't user any self(object)
-    # verifying token and return user_id
-    @staticmethod
-    def validating_token(token):
-        # creating serializer
-        serializer = Serializer(current_app.config['SECRET_KEY'])
-        # exception dealing for expiration
-        try:
-            user_id = serializer.loads(token)['user_id']
-        except:
-            # return none if it occurs exception
-            return None
-        # return user using token got
-        return User.query.get(user_id)
-
-    # magic method
-    def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
-
-
-# one - multiple
-class Post(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    # arg is func so, datetime.utcnow (not ()), datetime import needed
-    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    content = db.Column(db.Text, nullable=False)
-    # foreign key to User model
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
-    # magic method
-    def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
 
 
 class CVocab(db.Model):
@@ -158,6 +98,7 @@ class Analysis(db.Model):
 
     def __repr__(self):
         return f"Strain('{self.Analysis_ID}', '{self.Sequencing_ID}', '{self.Software_name}', '{self.Software_version}', '{self.Analyst_name}', '{self.Analysis_status}', '{self.note}'"
+
 
 
 
