@@ -2,11 +2,11 @@ from flask import Blueprint
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from app.models import CVocab, Strain, Animal, Tissue, Sequencing, Analysis
 from app import db
+from sqlalchemy import func
 
 
 data = Blueprint('data', __name__)
 
-@data.route('/')
 @data.route('/data/hrdp')
 def data_hrdp():
 
@@ -59,19 +59,21 @@ def data_hrdp():
 
     return render_template('data_hrdp.html', title='HRDP', tableset=tableset, columnset=columnset)
 
-
+@data.route('/')
 @data.route('/view')
 def view():
     # sequencing
     # data list
     view_list = db.session.query(
-        Sequencing.run_ID.label("RunID"),
-        Sequencing.platform.label("Platform"),
-        Sequencing.Raw_data_coverage.label("Raw_data_coverage"),
-        Animal.strain_name.label("Rat_Strain"),
-        Tissue.type.label("Tissue_name")).join(Tissue).join(Animal, Tissue.animal_ID == Animal.animal_name).all()
+        Sequencing.Run_ID.label("RunID"),
+        Animal.Strain_name.label("Rat_Strain"),
+        Tissue.Type.label("Tissue_name"),
+        Sequencing.Platform.label("Platform")).join(Tissue).join(Animal, Tissue.Animal_ID == Animal.Animal_name).all()
+        # .options(func.replace(Sequencing.Raw_data_coverage, 'None', '')).all()
+                 # , synchronize_session=False
 
-    view_column_list = ['RunID', 'Platform', 'Raw_data_coverage', 'Tissue_name', 'Rat_Strain']
+    view_column_list = ['RunID', 'Rat_Strain', 'Tissue_name', 'Platform']
+    # view_column_list = ['RunID', 'Rat_Strain', 'Tissue_name', 'Platform', 'Raw_data_coverage']
 
     return render_template('view.html', title='Sequencing View', tableset=view_list, columnset=view_column_list)
 
@@ -91,19 +93,19 @@ def view_detail(run_id):
 
     # collecting data from each table
     # sequencing
-    sequencings = Sequencing.query.filter(Sequencing.run_ID == run_id).first()
+    sequencings = Sequencing.query.filter(Sequencing.Run_ID == run_id).first()
 
     # tissue
     tissue_id = getattr(sequencings, 'DNA_source')
     tissues = Tissue.query.filter(Tissue.ID == tissue_id).first()
 
     # animal
-    animal_name = getattr(tissues, 'animal_ID')
-    animals = Animal.query.filter(Animal.animal_name == animal_name).first()
+    animal_name = getattr(tissues, 'Animal_ID')
+    animals = Animal.query.filter(Animal.Animal_name == animal_name).first()
 
     # strain
-    strain_name = getattr(animals, 'strain_name')
-    strains = Strain.query.filter(Strain.name == strain_name).first()
+    strain_name = getattr(animals, 'Strain_name')
+    strains = Strain.query.filter(Strain.Name == strain_name).first()
 
     # analysis
     analyses = Analysis.query.filter(Analysis.Sequencing_ID == run_id).all()
@@ -117,10 +119,10 @@ def view_detail(run_id):
 
     # columnset filtering
     columnset['analysis'] = analysis_columns.remove('Sequencing_ID')
-    columnset['sequencing'] = sequencing_columns.remove('run_ID')
+    columnset['sequencing'] = sequencing_columns.remove('Run_ID')
     columnset['tissue'] = tissue_columns.remove('ID')
-    columnset['animal'] = animal_columns.remove('animal_name')
-    columnset['strain'] = strain_columns.remove('name')
+    columnset['animal'] = animal_columns.remove('Animal_name')
+    columnset['strain'] = strain_columns.remove('Name')
 
     # columnset setting
     columnset['sequencing'] = sequencing_columns

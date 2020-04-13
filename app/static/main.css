@@ -7,6 +7,15 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: #006a4d;
 }
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 2.0rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
 
 .bg-steel {
   /*background-color: #5f788a;*/
