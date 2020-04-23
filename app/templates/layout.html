@@ -3,7 +3,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0>
 
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
@@ -14,22 +14,22 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
     <meta charset="UTF-8">
     {% if title %}
-        <title>Flask - {{ title }}</title>
+        <title> {{ title }}</title>
     {% else %}
-        <title>Flask</title>
+        <title>HRDP Genome Sequencing Data</title>
     {% endif %}
 </head>
 <body>
     <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand mr-4">HRDP genome sequencing</a>
+				<div class="navbar-brand mr-4" > <h2> HRDP genome sequencing</h2> </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
                     <div class="navbar-nav mr-auto">
-                        <a class="nav-item nav-link" href="{{ url_for('data.view') }}">Meta Data</a>
+                        <a class="nav-item nav-link" href="{{ url_for('data.view') }}">Available Data</a>
                         <a class="nav-item nav-link" href="{{ url_for('data.data_hrdp') }}">Data Tables</a>
                     </div>
                 </div>
