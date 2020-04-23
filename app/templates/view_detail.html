@@ -1,24 +1,42 @@
 {% extends "layout.html" %}
 {% block content %}
+<h3> Detailed view of {{detail_target}} </h3> 
 {% macro grid(table=table) -%}
-<table class="table table-striped">
-  <thead>
-    <tr>
+<table class="table table-sm table-striped">
     {% for column in columnset[table] %}
-        <th scope="col">{{column}}</th>
+      <tr>
+      {% set class = tableset[table] %}
+        <th scope="row">{{column}}</th>
+
+        {% if table == 'Analysis' %}
+          {% set classlist = tableset[table] %}
+          {% for class in classlist %}
+              <td>{{ class[column] }}</td>
+          {% endfor %}
+
+        {%elif table == 'Deepvariant results'%}
+          {% set classlist = tableset[table] %}
+          {% for class1 in classlist %}
+              <td>{{ class1[column] }}</td>
+          {% endfor %}
+
+        {% else %}
+              <td>{{ class[column] }}</td>
+        {% endif %}
+      </tr>
     {% endfor %}
-    </tr>
-  </thead>
-  <tbody>
-    {% set class = tableset[table] %}
-    <tr>
-        {% for column in columnset[table] %}
-        <td>{{ class[column] }}</td>
-        {% endfor %}
-    </tr>
-  </tbody>
 </table>
 {%- endmacro %}
+{% macro detail(table=table) -%}
+{%- endmacro %}
+
+
+{% for name in column_list %}
+  <h4>{{name}}</h4>
+  {{grid(name)}}
+{%endfor%}
+
+<!--
 <h3>Strain</h3>
 {{ grid('strain')}}
 <h3>Animal</h3>
@@ -29,4 +47,14 @@
 {{ grid('sequencing')}}
 <h3>Analysis</h3>
 {{ grid('analysis')}}
+<h3>Long Ranger</h3>
+{{ grid('results')}}
+<h3>Deep Variant</h3>
+{{ grid('results')}}
+<h3>GrocSVS</h3>
+{{ grid('results')}}
+<h3>Supernova</h3>
+{{ grid('results')}}
+-->
+
 {% endblock content %}
