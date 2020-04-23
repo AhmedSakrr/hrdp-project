@@ -3,7 +3,7 @@ runtime: python37
 instance_class: F2
 
 env_variables:
-  BUCKET_NAME: "staging.hrdp-pure-273617.appspot.com"
+  BUCKET_NAME: "hrdp-project-prod.appspot.com"
 
 handlers:
 # Matches requests to /images/... to files in static/images/...
