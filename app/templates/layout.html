@@ -12,6 +12,50 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    <!-- google visualization -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        let newID = [];
+        function tabIdChanger(){
+            let elms = document.querySelectorAll("[id='chart_div']");
+
+            for(let i = 0; i < elms.length; i++){
+                elms[i].id = 'chart_div' + i;
+                newID.push(elms[i].id)
+                console.log(elms[i].id)
+            }
+        }
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+
+      function drawChart() {
+          console.log("draw")
+        let data = google.visualization.arrayToDataTable({{data | safe}}, true);
+
+        let options = {
+          legend: 'none',
+          bar: { groupWidth: '100%' }, // Remove space between bars.
+          candlestick: {
+            fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
+            risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
+          },
+          axisTitlesPosition: ''
+        };
+
+        tabIdChanger();
+
+        for(let i = 0; i < newID.length; i++){
+            console.log(newID[i])
+            let chart = new google.visualization.CandlestickChart(document.getElementById(newID[i]));
+            chart.draw(data, options);
+        }
+        // chart.draw(data, options);
+      }
+    </script>
     <meta charset="UTF-8">
     {% if title %}
         <title>Flask - {{ title }}</title>
@@ -32,6 +76,10 @@
                         <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a>
                         <a class="nav-item nav-link" href="{{ url_for('main.about') }}">About</a>
                         <a class="nav-item nav-link" href="{{ url_for('data.data_hrdp') }}">Data</a>
+                        <a class="nav-item nav-link" href="{{ url_for('visuals.gwlidel') }}">WLI-Dels</a>
+                        <a class="nav-item nav-link" href="{{ url_for('visuals.gwlilarge') }}">WLI-Large</a>
+                        <a class="nav-item nav-link" href="{{ url_for('visuals.gwmidel') }}">WMI-Dels</a>
+                        <a class="nav-item nav-link" href="{{ url_for('visuals.gwmilarge') }}">WMI-Large</a>
                     </div>
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">

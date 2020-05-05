@@ -6,7 +6,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
+from flask_mysqldb import MySQL
 from app.config import Config
+
 
 # import google.oauth2.credentials
 
@@ -17,6 +19,7 @@ from app.config import Config
 # app = Flask(__name__)
 # app.config.from_object(Config)
 
+mysql = MySQL()
 # db instance
 db = SQLAlchemy()
 # hash
@@ -53,18 +56,22 @@ def create_app(config_class=Config):
     # session
     login_manager.init_app(app)
     mail.init_app(app)
+    mysql.init_app(app)
+
 
     from app.users.routes import users
     from app.posts.routes import posts
     from app.main.routes import main
     from app.data.routes import data
     from app.errors.error_handlers import errors # instance of Blueprint in __init__.py
+    from app.visuals.routes import visuals
 
     app.register_blueprint(users)
     app.register_blueprint(posts)
     app.register_blueprint(main)
     app.register_blueprint(data)
     app.register_blueprint(errors)
+    app.register_blueprint(visuals)
 
     return app
 

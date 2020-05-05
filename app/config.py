@@ -11,6 +11,11 @@ class Config:
     MAIL_USE_SSL = os.environ.get('MAIL_USE_SSL')
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MYSQL_HOST = 'wmi-wli-sv-reserach.mysql.database.azure.com'
+    MYSQL_USER = 'pkim11@wmi-wli-sv-reserach'
+    MYSQL_PASSWORD = '!Petert2nn'
+    MYSQL_DB = 'sv_research_test_schema'
+
 
     # app.config['SECRET_KEY'] = '622eddbc87aa89d096fefb08c8460a65'
     # # /// relative path from current file
