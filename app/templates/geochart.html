@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type='text/javascript'>
+     google.charts.load('current', {
+       'packages': ['geochart'],
+       // Note: you will need to get a mapsApiKey for your project.
+       // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+       'mapsApiKey': 'AIzaSyDoh8UpZM-l5I1jjE12Rosix8YKQcXbc9A'
+     });
+     google.charts.setOnLoadCallback(drawMarkersMap);
+
+      function drawMarkersMap() {
+          let data = google.visualization.arrayToDataTable({{data | safe}});
+          let options = {
+            region: 'IT',
+            displayMode: 'markers',
+            colorAxis: {colors: ['green', 'blue']}
+          };
+
+          let chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+          chart.draw(data, options);
+       }
+</script>
+<h1>World Chart</h1>
+<div id="chart_div" style="width: 900px; height: 800px;"></div>
+{% endblock content %}

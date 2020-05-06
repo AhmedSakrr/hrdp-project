@@ -26,7 +26,7 @@ def gwlidel():
     cur.close()
 
     cur = mysql.connection.cursor()
-    cur.execute("select chr, ending_position, starting_position from wli_dels_longranger_chr12")
+    cur.execute("select starting_position, ending_position, starting_position from wli_dels_longranger_chr12")
     wli_dels_fetch_data = cur.fetchall()
 
     pos = 2
@@ -73,6 +73,8 @@ def gwlilarge():
 
     cur.close()
 
+    print(":::::::::::::::::::::::::::::::::", data)
+
     return render_template('gwlilarge.html', title='HRDP', data=data)
 
 @visuals.route('/wmi/dels')
@@ -94,7 +96,7 @@ def gwmidel():
     cur.close()
 
     cur = mysql.connection.cursor()
-    cur.execute("select chr, ending_position, starting_position from wmi_dels_longranger_chr12")
+    cur.execute("select starting_position, ending_position, starting_position from wmi_dels_longranger_chr12")
     wli_dels_fetch_data = cur.fetchall()
 
     pos = 2
@@ -140,5 +142,24 @@ def gwmilarge():
             data.append(target_list)
 
     cur.close()
+    print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data)
 
     return render_template('gwmilarge.html', title='HRDP', data=data)
+
+@visuals.route('/geoChart/large')
+def geoChart():
+    data = [
+        ['City', 'Population', 'Area'],
+        ['Rome', 2761477, 1285.31],
+        ['Milan', 1324110, 181.76],
+        ['Naples', 959574, 117.27],
+        ['Turin', 907563, 130.17],
+        ['Palermo', 655875, 158.9],
+        ['Genoa', 607906, 243.60],
+        ['Bologna', 380181, 140.7],
+        ['Florence', 371282, 102.41],
+        ['Fiumicino', 67370, 213.44],
+        ['Anzio', 52192, 43.43],
+        ['Ciampino', 38262, 11]
+    ]
+    return render_template('geochart.html', title='HRDP', data=data)

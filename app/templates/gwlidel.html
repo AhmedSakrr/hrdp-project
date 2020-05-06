@@ -1,5 +1,45 @@
 {% extends "layout.html" %}
 {% block content %}
+<script type="text/javascript">
+
+        let newID = [];
+        function tabIdChanger(){
+            let elms = document.querySelectorAll("[id='chart_div']");
+
+            for(let i = 0; i < elms.length; i++){
+                elms[i].id = 'chart_div' + i;
+                newID.push(elms[i].id)
+                console.log(elms[i].id)
+            }
+        }
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+
+      function drawChart() {
+        let data = google.visualization.arrayToDataTable({{data | safe}}, true);
+
+        let options = {
+          legend: 'none',
+          bar: { groupWidth: '100%' }, // Remove space between bars.
+          candlestick: {
+            fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
+            risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
+          },
+          axisTitlesPosition: ''
+        };
+
+        tabIdChanger();
+
+        for(let i = 0; i < newID.length; i++){
+            console.log(newID[i])
+            let chart = new google.visualization.CandlestickChart(document.getElementById(newID[i]));
+            chart.draw(data, options);
+        }
+        // chart.draw(data, options);
+      }
+</script>
 <h1>GROC-WLI Dels</h1>
 <div id="chart_div" style="width: 900px; height: 800px;"></div>
 {% endblock content %}
