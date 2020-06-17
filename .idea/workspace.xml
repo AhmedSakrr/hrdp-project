@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="240ace3b-f640-462f-b09b-9459d98f4602" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Flask Main" />
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="24b0a847-0f46-4f3f-a6ca-a6aba729da05" />
+  <component name="ProjectId" id="1Zjhv1cPlCpTwAmG0wDX3b3aA37" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="sqlite" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../jupyter/rotation-6-rna-seq/corr_clustermap.ipynb" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hrdpflask" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/templates" />
+      <recent name="$PROJECT_DIR$/app/visualization" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/users" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DjangoTestsConfigurationType">
+      <module name="hrdpflask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <module name="hrdpflask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <module name="hrdpflask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="hrdpflask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.FlaskServer">
+      <module name="hrdpflask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="hrdpflask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <module name="hrdpflask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <module name="hrdpflask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="240ace3b-f640-462f-b09b-9459d98f4602" name="Default Changelist" comment="" />
+      <created>1585358637678</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585358637678</updated>
+      <workItem from="1585358639609" duration="23677000" />
+      <workItem from="1585436859960" duration="6264000" />
+      <workItem from="1585451739665" duration="2556000" />
+      <workItem from="1585454520749" duration="8186000" />
+      <workItem from="1585584909967" duration="232000" />
+      <workItem from="1585585143192" duration="10267000" />
+      <workItem from="1585619107948" duration="1803000" />
+      <workItem from="1585629736046" duration="807000" />
+      <workItem from="1585630556790" duration="4581000" />
+      <workItem from="1585636333946" duration="11317000" />
+      <workItem from="1585669872898" duration="9542000" />
+      <workItem from="1585716582266" duration="12558000" />
+      <workItem from="1585730786069" duration="88470000" />
+      <workItem from="1585946103092" duration="8958000" />
+      <workItem from="1586001791338" duration="19882000" />
+      <workItem from="1586133186123" duration="5487000" />
+      <workItem from="1586147380331" duration="585000" />
+      <workItem from="1586148682450" duration="967000" />
+      <workItem from="1586149854084" duration="34034000" />
+      <workItem from="1586226302164" duration="10000" />
+      <workItem from="1586226478967" duration="23000" />
+      <workItem from="1586226770836" duration="26968000" />
+      <workItem from="1586317057833" duration="1909000" />
+      <workItem from="1586343913125" duration="1271000" />
+      <workItem from="1586391517502" duration="20219000" />
+      <workItem from="1586428408759" duration="4000" />
+      <workItem from="1586428432220" duration="1051000" />
+      <workItem from="1586429495758" duration="12266000" />
+      <workItem from="1586487706932" duration="5766000" />
+      <workItem from="1586499336567" duration="26276000" />
+      <workItem from="1586567778609" duration="21509000" />
+      <workItem from="1586681781684" duration="26000" />
+      <workItem from="1586687412570" duration="133000" />
+      <workItem from="1586731988692" duration="6562000" />
+      <workItem from="1586752694084" duration="8527000" />
+      <workItem from="1586799061791" duration="11239000" />
+      <workItem from="1586831203108" duration="33416000" />
+      <workItem from="1586997087404" duration="1263000" />
+      <workItem from="1587083720813" duration="603000" />
+      <workItem from="1587317689422" duration="36000" />
+      <workItem from="1587317735065" duration="1691000" />
+      <workItem from="1587320399118" duration="9169000" />
+      <workItem from="1587345573045" duration="1003000" />
+      <workItem from="1587349437085" duration="7048000" />
+      <workItem from="1587375816915" duration="104000" />
+      <workItem from="1587546714699" duration="11000" />
+      <workItem from="1587546734582" duration="647000" />
+      <workItem from="1587629186019" duration="8638000" />
+      <workItem from="1587656219688" duration="1520000" />
+      <workItem from="1587889888060" duration="5000" />
+      <workItem from="1587930896498" duration="3000" />
+      <workItem from="1587934380513" duration="7000" />
+      <workItem from="1588142233284" duration="4000" />
+      <workItem from="1588685495213" duration="29800000" />
+      <workItem from="1588758479542" duration="4167000" />
+      <workItem from="1588836883495" duration="10000" />
+      <workItem from="1588836902429" duration="1217000" />
+      <workItem from="1588839349187" duration="679000" />
+      <workItem from="1588842858593" duration="433000" />
+      <workItem from="1588869211565" duration="7740000" />
+      <workItem from="1590385710361" duration="109000" />
+      <workItem from="1591692269208" duration="54000" />
+      <workItem from="1591692337549" duration="662000" />
+      <workItem from="1592396628992" duration="2336000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/hrdp-project" />
+    </ignored-roots>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="448" y="214" width="800" height="677" key="#Inspections" timestamp="1586429277498">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="448" y="214" width="800" height="677" key="#Inspections/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586429277498" />
+    <state x="875" y="214" width="800" height="729" key="#Intentions" timestamp="1586429478535">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="875" y="214" width="800" height="729" key="#Intentions/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586429478535" />
+    <state x="847" y="214" width="251" height="263" key="#Notifications" timestamp="1587375824439">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="847" y="214" width="251" height="263" key="#Notifications/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1587375824438" />
+    <state x="1483" y="214" width="800" height="677" key="#Notifications/0.27.4480.1053@0.27.4480.1053" timestamp="1585871233021" />
+    <state x="875" y="214" width="800" height="677" key="#Plugins" timestamp="1586429470822">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="875" y="214" width="800" height="677" key="#Plugins/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586429470821" />
+    <state x="448" y="214" width="800" height="677" key="#SQL_Dialects" timestamp="1586415837137">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="448" y="214" width="800" height="677" key="#SQL_Dialects/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586415837137" />
+    <state x="448" y="214" width="800" height="677" key="#SQL_Resolution_Scopes" timestamp="1586416846355">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="448" y="214" width="800" height="677" key="#SQL_Resolution_Scopes/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586416846355" />
+    <state x="495" y="155" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587629197620">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="371" y="155" width="785" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053/2560.0.1920.1080@0.27.1920.1053" timestamp="1585726567756" />
+    <state x="371" y="155" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585464861767" />
+    <state x="495" y="155" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1587629197620" />
+    <state x="857" y="351" width="589" height="416" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587631213943">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="857" y="351" width="589" height="416" key="#com.intellij.fileTypes.FileTypeChooser/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1587631213943" />
+    <state x="911" y="236" width="924" height="684" key="DBNavigator.ProjectSettingsDialog" timestamp="1585630264443">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="911" y="236" width="924" height="684" key="DBNavigator.ProjectSettingsDialog/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1585630264443" />
+    <state width="247" height="195" key="DatabaseViewActions_Filter" timestamp="1585643856471">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state width="247" height="195" key="DatabaseViewActions_Filter/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1585643856471" />
+    <state x="645" y="312" width="515" height="444" key="EnvironmentVariablesDialog" timestamp="1587375882212">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="484" y="312" width="515" height="444" key="EnvironmentVariablesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585394733724" />
+    <state x="645" y="312" key="EnvironmentVariablesDialog/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1587375882212" />
+    <state x="983" y="392" width="374" height="484" key="FileChooserDialogImpl" timestamp="1590385760752">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="737" y="392" width="374" height="484" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1586001842562" />
+    <state x="983" y="392" width="424" height="484" key="FileChooserDialogImpl/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1590385760752" />
+    <state width="2104" height="129" key="GridCell.Tab.0.bottom" timestamp="1586428259200">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state width="1507" height="204" key="GridCell.Tab.0.bottom/0.27.1920.1053/2560.0.1920.1080@0.27.1920.1053" timestamp="1585997056920" />
+    <state width="1374" height="258" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585881189049" />
+    <state width="2104" height="129" key="GridCell.Tab.0.bottom/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586428259200" />
+    <state width="1025" height="108" key="GridCell.Tab.0.bottom/0.27.4480.1053@0.27.4480.1053" timestamp="1586380307285" />
+    <state width="2104" height="129" key="GridCell.Tab.0.center" timestamp="1586428259200">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state width="1507" height="204" key="GridCell.Tab.0.center/0.27.1920.1053/2560.0.1920.1080@0.27.1920.1053" timestamp="1585997056919" />
+    <state width="1374" height="258" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585881189046" />
+    <state width="2104" height="129" key="GridCell.Tab.0.center/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586428259200" />
+    <state width="1025" height="108" key="GridCell.Tab.0.center/0.27.4480.1053@0.27.4480.1053" timestamp="1586380307285" />
+    <state width="2104" height="129" key="GridCell.Tab.0.left" timestamp="1586428259200">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state width="1507" height="204" key="GridCell.Tab.0.left/0.27.1920.1053/2560.0.1920.1080@0.27.1920.1053" timestamp="1585997056919" />
+    <state width="1374" height="258" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585881189045" />
+    <state width="2104" height="129" key="GridCell.Tab.0.left/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586428259200" />
+    <state width="1025" height="108" key="GridCell.Tab.0.left/0.27.4480.1053@0.27.4480.1053" timestamp="1586380307284" />
+    <state width="2104" height="129" key="GridCell.Tab.0.right" timestamp="1586428259200">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state width="1507" height="204" key="GridCell.Tab.0.right/0.27.1920.1053/2560.0.1920.1080@0.27.1920.1053" timestamp="1585997056919" />
+    <state width="1374" height="258" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585881189047" />
+    <state width="2104" height="129" key="GridCell.Tab.0.right/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586428259200" />
+    <state width="1025" height="108" key="GridCell.Tab.0.right/0.27.4480.1053@0.27.4480.1053" timestamp="1586380307285" />
+    <state width="2514" height="318" key="GridCell.Tab.1.bottom" timestamp="1586133171926">
+      <screen x="0" y="27" width="4480" height="1053" />
+    </state>
+    <state width="914" height="344" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585421517778" />
+    <state width="2514" height="318" key="GridCell.Tab.1.bottom/0.27.4480.1053@0.27.4480.1053" timestamp="1586133171926" />
+    <state width="2514" height="318" key="GridCell.Tab.1.center" timestamp="1586133171925">
+      <screen x="0" y="27" width="4480" height="1053" />
+    </state>
+    <state width="914" height="344" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585421517778" />
+    <state width="2514" height="318" key="GridCell.Tab.1.center/0.27.4480.1053@0.27.4480.1053" timestamp="1586133171925" />
+    <state width="2514" height="318" key="GridCell.Tab.1.left" timestamp="1586133171925">
+      <screen x="0" y="27" width="4480" height="1053" />
+    </state>
+    <state width="914" height="344" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585421517777" />
+    <state width="2514" height="318" key="GridCell.Tab.1.left/0.27.4480.1053@0.27.4480.1053" timestamp="1586133171925" />
+    <state width="2514" height="318" key="GridCell.Tab.1.right" timestamp="1586133171925">
+      <screen x="0" y="27" width="4480" height="1053" />
+    </state>
+    <state width="914" height="344" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585421517778" />
+    <state width="2514" height="318" key="GridCell.Tab.1.right/0.27.4480.1053@0.27.4480.1053" timestamp="1586133171925" />
+    <state width="263" height="541" key="HiddenNamespacesPopup" timestamp="1585454692646">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="263" height="541" key="HiddenNamespacesPopup/0.27.1920.1053@0.27.1920.1053" timestamp="1585454692646" />
+    <state x="205" y="84" width="1337" height="968" key="SettingsEditor" timestamp="1587350877282">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="613" y="131" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1585464043946" />
+    <state x="205" y="84" width="1337" height="968" key="SettingsEditor/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1587350877282" />
+    <state x="580" y="289" key="SettingsEditor/0.27.4480.1053@0.27.4480.1053" timestamp="1586119135129" />
+    <state width="299" height="523" key="SqlResolveConfigurable" timestamp="1586416846222">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state width="299" height="523" key="SqlResolveConfigurable/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586416846222" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1585632692509">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1585632692509" />
+    <state x="572" y="210" width="552" height="685" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1586429351106">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="572" y="210" width="552" height="685" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586429351106" />
+    <state x="821" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1587083723225">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="616" y="380" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1586343914275" />
+    <state x="821" y="380" key="com.intellij.ide.util.TipDialog/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1587083723225" />
+    <state x="821" y="380" key="com.intellij.ide.util.TipDialog/0.27.2560.1053/2560.0.1920.1080@2560.0.1920.1080" timestamp="1585716584324" />
+    <state x="1463" y="170" width="419" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1586732204525">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="915" y="170" width="690" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1585878302234" />
+    <state x="1463" y="170" width="419" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586732204525" />
+    <state x="2560" y="170" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.4480.1053@0.27.4480.1053" timestamp="1585887126920" />
+    <state x="740" y="164" width="618" height="777" key="find.popup" timestamp="1587361736926">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="740" y="164" width="618" height="777" key="find.popup/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1587361736926" />
+    <state x="1524" y="257" width="896" height="678" key="search.everywhere.popup" timestamp="1586762801191">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="1143" y="257" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1585879759188" />
+    <state x="1524" y="257" width="896" height="678" key="search.everywhere.popup/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586762801191" />
+    <state x="365" y="437" width="540" height="230" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586652206467">
+      <screen x="0" y="27" width="2560" height="1053" />
+    </state>
+    <state x="365" y="437" width="540" height="230" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.27.2560.1053/2560.0.1920.1080@0.27.2560.1053" timestamp="1586652206467" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/hrdpflask$hrdp_flask.coverage" NAME="hrdp-flask Coverage Results" MODIFIED="1586400648938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hrdp_flask$hrdp_flask.coverage" NAME="hrdp-flask Coverage Results" MODIFIED="1585467454054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
