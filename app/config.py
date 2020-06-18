@@ -15,20 +15,3 @@ class Config:
     MYSQL_USER = os.getenv('MYSQL_USER')
     MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
     MYSQL_DB = os.getenv('MYSQL_DB')
-
-
-    # app.config['SECRET_KEY'] = '622eddbc87aa89d096fefb08c8460a65'
-    # # /// relative path from current file
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hrdp.sdb'
-    #
-    # # app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
-    # # app.config['MAIL_PORT'] = 587
-    # # app.config['MAIL_USE_TLS'] = True
-    # app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-    # app.config['MAIL_PORT'] = 465
-    # app.config['MAIL_USE_SSL'] = True
-    # # fetching EMAIL_USER, EMAIL_PASSWORD from env variable
-    # # app.config['MAIL_USERNAME'] = os.environ.get('EMAIL_USER')
-    # # app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASSWORD')
-    # app.config['MAIL_USERNAME'] = '@gmail.com'
-    # app.config['MAIL_PASSWORD'] = ''
